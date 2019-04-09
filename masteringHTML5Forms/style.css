@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: #333;
+}
+
+body {
+    font-size: 12px;
+    width: 517px;
+    padding: 20px;
+    margin: 10px auto;
+    background-color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+}
+
+label {
+    font-weight: bold;
+}
+
+/*! general form*/
+.heading {
+    font-size: 20px;
+}
+
+.gender {
+    position: relative;
+    top: -42px;
+    left: 185px;
+}
+
+.selectOption {
+    width: 239px;
+}
+
+.textboxAddress {
+    width: 474px;
+}
+
+.textboxAddressDetail {
+    width: 232px;
+}
+
+.legend {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.submit {
+    text-align: center;
+}
+

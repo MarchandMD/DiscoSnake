@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form action="">
+        <fieldset>
+            <legend class="legend">Personal Information</legend>
+
+            <div>
+                <label for="name">name</label><br>
+                <input type="text" placeholder="First" autofocus>
+                <input type="text" placeholder="Last">
+            </div><br>
+
+            <div>
+                <label for="dob">Date of Birth</label><br>
+                <input type="date" value="">
+            </div>
+
+            <div class="gender">
+                <label for="gender">Gender</label>
+                <input type="radio"><label>Male</label>
+                <input type="radio"><label>Female</label>
+            </div><br>
+            <div>
+                <label for="address">Address</label><br>
+                <input type="text" class="textboxAddress" placeholder="Street Address">
+                <input type="text" class="textboxAddress" placeholder="Address Line 2"><br>
+                <input type="text" class="textboxAddressDetail" placeholder="City">
+                <input type="text" class="textboxAddressDetail" placeholder="State/Province"><br>
+                <input type="text" class="textboxAddressDetail" placeholder="Pincode">
+                <select class="selectOption">
+                    <option value="Country">Select Country</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="contact">Phone Number</label>
+                <br>
+                <input type="tel" class="textboxAddressDetail" placeholder="Home">
+                <input type="tel" class="textboxAddressDetail" placeholder="Work">
+            </div><br>
+            <div>
+                <label for="email">Email Address</label>
+                <br>
+                <input type="email" class="textboxAddressDetail" placeholder="emailAddress@gmail.com">
+            </div>
+
+        </fieldset>
+    </form>
+</body>
+
+</html>

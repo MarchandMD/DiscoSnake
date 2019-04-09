@@ -1,0 +1,481 @@
+/*Style.css*/
+/* Boardwalk Realty - Design created by Andrew Scales */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+    /*Gets rid of awkward whitespace*/
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: none;
+}
+
+/*Menubar Selection Highlight*/
+.hilight {
+    background-color: #FEFEFE;
+    box-shadow: inset 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hilight div {
+    color: #000 !important;
+}
+
+.bgblock {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.90);
+    z-index: 0;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -0%);
+    position: fixed;
+    width: 65%;
+    height: 100%;
+}
+
+#fullContainer {
+
+    /*    width: 100%;*/
+    min-height: 100%;
+    height: auto;
+    background-color: #fff;
+    /*    background-position: center;*/
+}
+
+#menuBar {
+    height: 15vh;
+    background-color: lightblue;
+    display: flex;
+}
+
+#menuBar ul {
+    list-style: none;
+    padding: 10px;
+}
+
+.social {
+    position: absolute;
+    top: 10px;
+    display: inline-block;
+    float: right;
+    right: 20%;
+    /*    top: 15;*/
+}
+
+
+
+/* .mM {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.mM-1 {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+/* .mobileMenu {
+    width: 100%;
+    bottom: 0px;
+} */
+
+.title {
+    color: #000;
+    text-align: center;
+    font-size: 20pt;
+}
+
+.byLine {
+    top: 0;
+    text-align: center;
+    color: #2846A8;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+}
+
+#footer {
+    z-index: 0;
+    height: 150px;
+    width: 100%;
+    background-color: #3053C7;
+    position: relative;
+    /*    bottom: 0px;*/
+}
+
+.overlay {
+    font-family: sans-serif;
+    position: relative;
+    font-size: 24pt;
+    color: white;
+    padding: 5px;
+}
+
+.button {
+    display: none;
+}
+
+input {
+    margin: 5px;
+    width: 300px;
+}
+
+text-area {
+    width: 100%;
+}
+
+.footerText {
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+/*********************/
+/*Property Page Style*/
+/*********************/
+.property {
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    /*    position: absolute;*/
+    /*    width: 60%;*/
+    /*    height: 50%;*/
+}
+
+.photo {
+    /*    background-color: green;*/
+    /*    max-height: 300px;*/
+    /*    width: 50%;*/
+    display: inline-block;
+    position: relative;
+    /*    float: left;*/
+}
+
+.stats {
+    /*    background-color: grey;*/
+    height: 300px;
+    /*    width: 50%;*/
+    display: inline-block;
+    position: relative;
+    font-family: sans-serif;
+
+}
+
+.innerPhoto {
+    width: 100%;
+    /*    max-w*/
+}
+
+.description {
+    margin-top: 10px;
+    display: block;
+    font-family: sans-serif;
+    font-size: 14pt;
+}
+
+.propertyName {
+    font-size: 24pt;
+}
+
+.statsTable {
+    margin-top: 10px;
+    width: 90%;
+    text-align: left;
+}
+
+.statsTable tr {
+    font-weight: 100;
+    background-color: #f1f1f1;
+    border-bottom: solid;
+    border-width: 1px
+}
+
+.properties {
+
+    /*    position: absolute;*/
+    /*    width: 60%;*/
+    /*    height: 50%;*/
+}
+
+.propertyContainer {
+    display: none;
+}
+
+/* @media only screen and (min-width:860px) {
+    .byLine {
+        color: #fff;
+        text-align: left;
+    }
+
+    .propertyContainer {
+        display: block;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+               height:250px;
+        background-color: #2846A8;
+
+    }
+
+    .pHeadRow {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: sans-serif;
+        color: #fff;
+        padding: 10px;
+        font-size: 18pt;
+    }
+
+    .pBin {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .fProperty {
+               z-index:
+        position: relative;
+        color: white;
+        font-family: sans-serif;
+        width: 24%;
+        margin: 2px;
+        display: inline-block;
+               background-image: url(579b8dbee70ab.jpg);
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+
+    }
+
+    /*********************/
+/*Property Page Style*/
+/*********************/
+.properties {
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+.property {
+
+    position: absolute;
+    width: 60%;
+}
+
+.photo {
+    padding: 5px;
+    width: 48%;
+    height: 300px;
+    float: left;
+}
+
+.stats {
+    padding: 5px;
+    width: 48%;
+}
+
+.description {
+    position: fixed;
+    margin-top: 40px;
+    padding: 5px;
+}
+
+#fullContainer {
+    z-index: -1;
+    background-image: url(Flatirons_Winter_Sunrise_JesseVarner.jpg);
+    background-size: cover;
+    background-position: center;
+
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2846A8;
+    height: 10vh;
+
+}
+
+#titleBar {
+    z-index: 100;
+    height: 70px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: sans-serif;
+
+    padding: 0;
+
+}
+
+.titleBlock {
+    z-index: 1;
+    padding: 2px;
+    /*        margin-top: 10px;*/
+    /*        margin-left: 5%;*/
+    width: 100%;
+    /*        float: left;*/
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+.byline {
+    text-align: left;
+    color: white;
+}
+
+.mM {
+    display: none;
+}
+
+.mContain {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainMenu {
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    /*        width: 600px;*/
+    /*        position: absolute;*/
+    /*        width: 100%;*/
+    height: 100%;
+}
+
+.menuItem {
+    height: 100%;
+    font-weight: 100;
+    /*        background-color: white;*/
+    /*        margin: 5px;*/
+}
+
+
+#content {
+    padding: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contentText {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14pt;
+    font-family: sans-serif;
+}
+
+.contentText p {
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+.heroImage {
+    position: relative;
+    height: 400px;
+    background-color: green;
+}
+
+.heroText {
+    /*        background-color: green;*/
+    position: absolute;
+    width: 60%;
+    top: 50%;
+    transform: translate(0%, -100%);
+    left: 20%;
+    background: none;
+}
+
+.overlay {
+    display: inline-block;
+    height: auto;
+    color: white;
+    font-size: 40pt;
+    font-family: sans-serif;
+    background-color: rgba(40, 70, 168, 0.7);
+    padding: 10px;
+    float: left;
+
+  
+}
+
+.button {
+    display: none;
+}
+
+.bgblock {
+    display: block;
+    width: 60%;
+}
+
+
+
+/* @media only screen and (min-width: 1400px) {
+    .button {
+        transform: translate(-5%, 110%);
+        width: 200px;
+        height: 40pt;
+        padding: 10px;
+        border: 3px;
+        border-style: solid;
+        border-color: rgb(40, 70, 168);
+               border-radius: 40px;
+        background-color: rgba(255, 255, 255, 0.75);
+        margin-left: 10px;
+               float: left;
+        display: block;
+        text-align: center;
+    }
+
+    .button div {
+        font-family: sans-serif;
+        font-size: 16pt;
+        color: #000;
+        position: relative;
+        height: 15pt;
+               top: 0%;
+        transform: translate(0%, -260%);
+
+    }
+} */
+
+
+
+/* I'm adding styles to my HTML elements */
+
+
+.mainMenu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style-type: none;
+    width: 50%;
+    margin-left: 50%;
+}
+
+.mainMenu > li {
+    padding: 10px;
+    border: 1px solid black;
+}

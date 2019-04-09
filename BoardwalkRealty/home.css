@@ -1,0 +1,6 @@
+/*Homepage Specific Style*/
+#fullContainer {
+    background-image: none !important;
+    z-index: -1;
+    background-color: #f3f3f3;
+}

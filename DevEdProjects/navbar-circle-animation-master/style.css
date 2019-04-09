@@ -1,0 +1,126 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+/* styles the nav section */
+nav {
+    height: 10vh; /* gives the nav bar a height in desktop */
+    background: #5b78c7; /* color */
+}
+
+
+/* styles the unorder list */
+.navlinks {
+    display: flex;
+    list-style: none; /* remove the dots */
+    width: 50%; /* not sure why 50% of the nav item knows to default to 50% of the page width; I'm going to leave a background color, just for the sake of visualization */
+    background: lightcoral;
+    height: 100%; /* this makes the unorder list the height of it's containing element, which is the nav tags */
+    justify-content: space-around; /* since it's a flex, it's default is a row and thus, justify-content will apply horizontally */
+    align-items: center; /* with flex-direction of row, align-items will apply vertically */
+    margin-left: auto; /* putting margin-left: auto; snaps the item to the right-side of the containing element, probably because the width is 50% and saying margin-left means the left margin will move 50% of the way across the screen */
+}
+
+.navlinks li a {
+    color: white; /* text color of anchor tags in desktop mode */
+    text-decoration: none; /* removes the underlines */
+    font-size: 16px; /* font-size set */
+}
+
+.landing {
+    height: 90vh; /* gives the impression of a full page; the .landing class is applied to a section tag; */
+    background: lightgray;
+    display: flex; 
+    justify-content: center; /* aligns the dummy content horizontally (flex-direction default is row)*/ 
+    align-items: center; /* aligns the dummy content vertically (flex-direction default is row) */
+}
+
+.landing h1 {
+    margin: 100px; /* styles the dummy content to a position */
+    font-size: 50px; /* increases the size of dummy text */
+    color: purple;
+}
+
+/* this begins the responsiveness at a certain size */
+@media screen and (max-width: 768px) {
+    /* So, I'm targeting the unordered list here;  */
+    .navlinks {
+        position: fixed; /* position fixed; Since this is responsive, it's like the 'canvas' for everything is wiped clean, sort of.  */
+        background: #5b78c7; /* adds a background color to the unorder list equal tto the top navbar */
+        height: 100vh; /* When the screen is smallerthan 768px, the height of the unorderlist becomes 100vh of the screen; It's on the screen, but it's actually being masked by something */
+        width: 100%; /* this makes the unordered list 100% of the containing element, which is the nav? */
+        flex-direction: column; /* this rotates the contents with the navlinks to a column; since it's just the three navlinks, it's predictable how they'll rotate */
+        clip-path: circle(75px at 90% -10%); /* this requires some understanding */
+        -webkit-clip-path: circle(100px at 90% -10%); /* this is for cross-browser compatability */
+        transition: all 1.0s ease-out; /* this adds a transition to all the elements; but when? The answer is, when the open class is applied; so adding a second class  of open to the ul.navlinks will duplicate the clip-path and -webkit clip-path property; since there is a transition, it will apply the transition values to the CSS properties that are applied when adding the second class */
+        pointer-events: none; /* this removes the ability for the mouse to change to a cursor when the navlinks unorder list is not shown */
+    }
+
+    /* this is a CSS selector that will be toggled when the hamburger button is clicked; this will be applied via JS */
+    .navlinks.open {
+        clip-path: circle(1000px at 90% -10%);
+        -webkit-clip-path: circle(100px at 90% -10%);
+        pointer-events: all;
+    }
+
+    /* this is necesary for using the position: absolute property/value pair in the .hamburger CSS selector below; if I'm going to use absolute, I believe the position has to be relative to something else....but I may be wrong. This requires more understanding */
+    nav {
+        position: relative;
+    }
+
+    /* so, the class of hamburger applies only to one div, and that one div contains the three divs with the class of line. So .hamburger contains div.line (x3) */
+    .hamburger {
+        position: absolute; /* So this is why the nav CSS selector has a position of relative */
+        cursor: pointer; /* this just changes the mouse to a pointer hand when mouseover */
+        right: 5%; /* this positions the absolute hamburger within the nav; it sends the lines to the right of the screen, and 5% in */
+        top: 50%; /* this poisitions the aboslute hambuger within the nav; it shifts the hamburger down by 50% from the top of the nav element. THE NAV ELEMENT only. */
+        transform: translate(-5%, -50%); /* i'm not really sure what this transform: translate does, except it is used continuously with right and top movements; so it is like a correct function.  */
+        z-index: 2; /* this helps to place the hambburger above the ul when it grows after clicking the hamburger */
+    }
+
+    /* this CSS selector grabs the three divs that have a class of .line. So this is like a neat way to make a small line, three times over. and this would be something I'd need to do if I were to animate a hamburger*/
+    .line {
+        width: 30px; /* very simply makes the div.line 30px wide */
+        height: 3px; /* very simply...makes the div.line 3 px high */
+        background: white; /* very simply...colors the line */
+        margin: 5px; /* very simply....spaces the lines with a margin */
+    }
+
+    /* so when smaller than 768px, let's style the rest of the page. this changes the orientation of thigs to a column; Remember, when we're larger than 768px, flex-direction is a row; this just turns arranges the direct child HTML elements inside the section.landing into a column; */
+    .landing {
+        flex-direction: column;
+    }
+
+    /*  I don't understand why this is necessary; other than revealing the list items later*/
+    .navlinks li {
+        opacity: 0;
+    }
+    
+    /* makes the text inside the list item anchor tags larger */
+    .navlinks li a{
+        font-size: 25px;
+    }
+
+    /* in the ul.navlinks, there are list items. This is how I grab a specific list item; Since there are three list items, there are 3 children, and I can style each one differently by selecting .navlinks li:th-child(n). this actually makes more sense than I ever though it would  */
+    .navlinks li:th-child(1) {
+        transition: all 1.0s ease 1.0s; /* this sets up a transition onto the list item...what is it transitioning? all the CSS properties, but I don't know which ones it has. Opacity? Font-size?  */
+    }
+
+    .navlinks li:th-child(2) {
+        transition: all 1.5s ease 1.5s;
+    }
+    .navlinks li:th-child(3) {
+        transition: all 2.5s ease 2.0s;
+    }
+
+    /* this class is added via javascript and it adds a class of fade to the list items */
+    li.fade {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,35 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* So this CSS rule selects both the header and the footer; since i'm not doing much to the header and the footer, both are selected simultaneously */
+header, footer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: arial;
+}
+
+header h1, footer h1 {
+    font-size: 60px;
+}
+
+/* What has the animation class? the entire middle section is section.animation. */
+.animation {
+    height: 100vh; /* the seciton is 100vh */
+    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%); /* pulled from webgradients.com */
+    position: relative; /* section needs a position because a child element is positioned */
+    overflow: hidden; /* when the thing is done, it's off the screen. the animation is actually being applied to the section.animation > img .... so the overflow hidden property will apply to the section.animation > img */
+}
+
+/* obvious */
+.paper-plane {
+    position: absolute;
+    height: 100px;
+    top: 50%;
+    left: 0;
+}

@@ -1,0 +1,71 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+header {
+    height: 100vh; /* gives the header element 100 height of the viewport */
+    display: flex; /* allows me to align any direct children inside the header */
+    align-items: center; /* vertical control of a flexbox row */
+    justify-content: center; /* horizontal control of a flexbox row */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+    color: white; /* white text */
+}
+
+/* <section> styling - Main body of the site */
+.about {
+    height: 300vh; /* gives the center section a height of 300vh;  */
+    display: flex; /* default flex-direciton is row;*/
+}
+
+.about-title { 
+    width: 50%; /* sets the div.about-title (left-hand column) to 50% width */
+    height: 100vh; /* sets the div.about-title height to 100vh */
+    display: flex; /* creates a flexbox with flex-direction of row */
+    justify-content: center; /* horizontal control of a flexbox row */
+    align-items: center; /* vertical control of a flexbox row */
+    font-size: 30px; /* increase font size */
+    margin: 0!important; /* removes all margin on this div element; because it is targeted in the JS using scroll magic, the !important flag is required to override and/or work-around a placeholder div created by scroll magic. More to write about for scroll magic */
+}
+
+.about-pages {
+    width: 50%; /* makes the one containing div.about-pages 50% wide */
+}
+
+.about-pages div {
+    height: 100vh; /* the three direct child divs of div.about-pages will all have a height of 100vh */
+    display: flex; /* creates a flex box div container; default orientation is row */
+    flex-direction: column; /* shifts the orientation of any direct children of div.about-pages to a column, and swaps the directional control of justify-contents and align-items */
+    justify-content: space-around; /* gives vertical control of a flexbox column */
+    align-items: center; /* gives horizontal control of a flexbox column */
+}
+
+.about-pages div > p {
+    width: 70%; /* Sets the width of the paragraphs within the div.about-pages */  
+    font-size: 18px; /* increases the font-size of the paragraphs */
+    line-height: 30px; /* spaces the paragraph out by increasing each line height */
+}
+
+.about-pages div:nth-child(1) {
+background-color: aquamarine; /* targets the 1st div child of the div.about-pages parent*/
+}
+
+.about-pages div:nth-child(2) { /* targets the 2nd div child of the div.about-pages parent */
+background-color: burlywood; 
+}
+
+.about-pages div:nth-child(3) { /* targets the 3rd div child of the div.about-pages parent */
+background-color: blueviolet;
+color: white;
+}
+
+footer { 
+    height: 50vh; /* sets the height of the footer element */
+    display: flex; /* creates a flexbox; default orientation is a row */
+    justify-content: center; /* controls horizontal placement in a flexbox row */
+    align-items: center; /* controls vertical placement in a flexbox row */
+    background-color: lightcoral; 
+    
+}

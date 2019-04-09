@@ -1,0 +1,170 @@
+/* imported font */
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* initial settings of body*/
+html,
+body {
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+    background: black;
+}
+
+
+/* The entire page is included in the header: nav, img, and date-text */
+header {
+    height: 100vh;
+    /* sets the height of the header to 100% of the viewport height */
+    position: relative;
+    /* this is necessary for other position; I can tell because when I see this CSS property/value pair without top/bottom/left/right stylings, then it's used as a positioned ancestor for some descendent items; so take a look at the HTML for the direct children; 3 tags are direct children: nav, img, h1; check those three things for positioning styles....nav isn't positioned; so it's not that. at least, it could be further down...it doesn't ahve to be a direct ancestor; img.cover DOES have a positioning. Position: absolute, with top: 0 and right: 0;I'm not convinced the position: relative is necessary; commenting out to verify... h1.cover-date also has a positioning element on it...but it wasn't affected by removing the position: relative on this html tag....so this was redundant */
+    display: flex;
+    /* this is necessary to align the items in it in a row; so the nav, img, and h1 are all in a row....somehow....but then the positioning of the img.cover and the h1.cover-date negate the display of flex in a row...so it's a little strange....  */
+}
+
+
+/* THE MORE I WORK WITH THIS, THE MORE I FIND THINGS THAT AREN'T GREAT; FOR INSTANCE, IT ISN'T EXACTLY RESPONSIVE; SMALLER SIZES DEFINITELY GIVE IT A CHALLENGE */
+
+/* cover image; this is an image, as opposed to a background image */
+.cover {
+    height: 100%;
+    /* set's the height of the .cover image to the viewport height */
+    position: absolute;
+    /* as opposed to relative, static, etc */
+    width: 100%;
+    /* make it width of 100% */
+    top: 0;
+    /* overkill */
+    right: 0;
+    /* overkill of the positioning */
+    object-fit: cover;
+    /* fill, contain, cover, none, scale-down */
+    /* */
+    object-position: bottom;
+}
+
+.cover-date {
+    position: absolute;
+    /* placing the date absolutely with left and bottom */
+    left: 10%;
+    /* the left edge of the h1.cover-date will be 10% in from the left */
+    bottom: 10%;
+    /* the bottom edge of the h1.cover-date will be 10% up from teh bottom */
+    color: white;
+    /* white text */
+}
+
+nav {
+    background: #966b58;
+    /* white background for the nav....the nav includes two divs....div.closed and div.open; so both of them will get a white background */
+    z-index: 1;
+    /* Not sure why this is relevant....   */
+    width: 40%;
+    /* sets the width of the nav.closed and nav.open; coordinates with animation so this will be used alter */
+    height: 20%;
+    /* sets the height of the nav to 20% */
+    color: #50b5c7;
+}
+
+.nav-closed {
+    display: flex;
+    /* puts the h3 and the ul.nav-links in the div.nav-closed into a row */
+    justify-content: space-around;
+    /* puts some horizontal space between the h3 and the ul.nav-links */
+    align-items: center;
+    /* puts the content of the h3 and the ul.nav-links in the center of the flexbox */
+    height: 20%;
+    /* this is set to a percentage, and I think it has to match the nav; which makes me think that this is somehow redundant. I should be able to control this with just one CSS selector */
+    width: 40%;
+    /* same goes for this This sets the width of the div.nav-closed...and I think this has to match the general nav tag that these two other divs are in....div.nav-closed and div.open */
+    position: absolute;
+    /* this gives me control over where nad how I position the nav-closed; but it doesn't have any top,right, botomt left declarations, so I'm a little confused as to w2hy this styling needs to be here */
+    background: white;
+    /* i cheated, becaues I want to see this element... hehehe */
+}
+
+.nav-closed ul {
+    /* display: flex; */
+    /* there are three list items LI within the ul, and if I don't put display: flex, then the ul list items are in a column; this is just making a flexbox out of the ul that is in a flexbox. so I'm nesting a flexbox in a flexbox */
+    list-style: none;
+    /* remove bulletpoints */
+    width: 50%;
+    /* 50% of the parent; and this is why nav-closed has a position of absolute; so the width of 50% respects the div.nav-closed */
+    justify-content: space-around;
+    /* just create some space around the list items horizontally */
+}
+
+.nav-open {
+    position: absolute;
+    /* gives me control of where the div.nav-open will appear after the animation triggers */
+    width: 40%;
+    /* so here, this is set to the same width as the nav and the div.nav-closed */
+    height: 80%;
+    /* this is something different than the div.nav-closed; this is because this is what the height of the div will be when it's opened;*/
+    top: 20%;
+    /* this is like an offset; the div.nav-closed has a height of 20%, so I don't want the div.nav-open to be absolutely positioned to the top; but i do want the top edge of the div.nav-open to appear 20% of the distance from the top of the page */
+    display: flex;
+    /* I want the direct children in the div.nav-open to be a flexbox */
+    flex-direction: column;
+    /* and I want that flexbox to be a column */
+    justify-content: space-evenly;
+    /* and I want the flexbox to evenly space the children in it vertically (remember, justify-content controls vertical alignment when flex-direction is a column */
+    align-items: center;
+    /* flex direction is colum so this will control the horizontal shift of the flexbox content or flex items */
+    opacity: 0;
+    /* initial value of 0 makes it hidden; javascript and more specifically GSAP will handle the animation of this changing */
+    pointer-events: none;
+    /* this disables the moust events when the div.nav-open isn't visible */
+}
+
+.clothing {
+    display: flex;
+    flex-direction: column;
+    /* so the first child, the first item in the div.nav-open is div.clothing; div.cloting has two direct children: h2 and a ul/ So we want to put these two things in a row flexbox */
+    justify-content: space-around;
+    /* the flexbox items in the row are evenly spaced horizontally */
+    align-items: center;
+    width: 100%;
+    /* the flexbox row stretches 100% of the nearest position ancestor */
+}
+
+.clothing h2 {
+    font-size: 48px;
+    /* bigger text */
+}
+
+.clothing ul li {
+    padding: 10px;
+    /* some spacing...weird */
+    list-style-type: none;
+    /* get rid of the bullet points */
+}
+
+.clothing ul li a {
+    color: white;
+    /* changes the font color */
+}
+
+/* The second child of div.nav-open, which will appear lower in the column, is div.nav-images */
+.nav-images {
+    display: flex;
+    /* puts the images in a flex box and creats flex items */
+    flex-direction: column;
+    /* orientaties the flex box in a column */
+    justify-content: space-evenly;
+    /* provides vertical spacing */
+    align-items: center;
+    /* provides horizontal positioning */
+    height: 100%;
+    /* stretches the div to 100% of it's containing element, which in this case is a box of the flexbox column */
+}
+
+.nav-images img {
+    max-width: 50%;
+    /* maxes out the width of the images at 50% of the containing flex box */
+}

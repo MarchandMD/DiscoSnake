@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GSAP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+
+            <div class="nav-closed">
+                <!-- this div.nav-closed is the navigation links that appear in the upper left hand corner of the screen -->
+                <h3>Portfolio</h3>
+                <ul class="nav-links">
+                    <li class="nav-button">Shop</li> <!-- used to trigger the animation -->
+                    <li>Blog</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+
+            <div class="nav-open">
+                <!-- what the animation will open to; initially not visible -->
+
+                <div class="clothing">
+                    <h2>clothes</h2>
+                    <ul>
+                        <li><a href="#">hats</a></li>
+                        <li><a href="#">swimsuits</a></li>
+                        <li><a href="#">Underwear</a></li>
+                        <li><a href="#">Misc</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-images">
+                    <img src="./images/DSC_0023.jpg" alt="">
+                    <img src="./images/DSC_0169.jpg" alt="">
+                </div>
+            </div>
+        </nav>
+        <img src="./images/DSC_0170.jpg" class="cover">
+        <h1 class="cover-date">04/02/2019</h1> <!-- inset text -->
+    </header>
+
+
+    <!-- 3 different libraries are imported in from www.cdnjs.com -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TimelineLite.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/plugins/CSSPlugin.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenLite.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

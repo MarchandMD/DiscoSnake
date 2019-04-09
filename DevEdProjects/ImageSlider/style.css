@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    border: 2px solid red;
+    justify-content: center;
+    align-items: center;
+}
+
+/* div that has three children: two buttons and one div.carousel-slide  */
+.carousel-container {
+    width: 600px; /* the entire 'window' for the carousel is set to 500px; could I do auto? */
+    /* margin: auto; provides a centering of the div within the body. I'd prefer to use a flex box..so I added a section.container and made it display:flex with a justify-content: center.... */
+     overflow: hidden;/* the images are acutally in a row, (as the flex display enfources in the next CSS rule; so any part of the image that's not within this 'window' will be considered overflow and is hidden */
+    position: relative;  /* this is required for styling fo the buttons */
+    border: 40px solid gray;
+    border-radius: 3px;
+    box-shadow: 0 10px 25px;
+}
+
+/* This is the div within the div.carousel-container that holds the images */
+.carousel-slides {
+    display: flex; /* orientates the images in a row */
+    height: 400px; /* The height of the div containing the carousel-slides needs to be set to a static height, to avoid dynamic resizing issues */
+}
+
+img {
+    min-width: 600px; /* this is a hack to avoid a small margin from appear on the screen at an edge of some of the picture, after transitioning */
+}
+
+
+
+/* styling for the buttons */
+#prev-button {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    z-index: 3;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+#next-button {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    z-index: 3;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+#prev-button:hover, #next-button:hover {
+    transform: scale(1.1);
+}
+
+p {
+    background: rgba(0,0,0,0.8);
+    color: white;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    padding: 5px 50px 5px 5px;
+    font-size: 28px;
+    font-family: arial;
+}

@@ -3,168 +3,157 @@ Create by Learn Web Developement
 Youtube channel : https://www.youtube.com/channel/UC8n8ftV94ZU_DJLOLtrpORA
 */
 
-const cvs = document.getElementById("snake");
-const ctx = cvs.getContext("2d");
+const cvs = document.querySelector('#canvas');
+const ctx = cvs.getContext('2d');
 
-// create the unit
+//box unit
 const box = 32;
 
-// load images
-
+//LOAD IMAGES AND SOUND
 const ground = new Image();
 ground.src = "img/ground.png";
 
 const foodImg = new Image();
 foodImg.src = "img/food.png";
 
-// load audio files
+// const dead = new Audio();
+// const eat = new Audio();
+// const up = new Audio();
+// const left = new Audio();
+// const right = new Audio();
+// const down = new Audio();
+// dead.src = "audio/dead.mp3";
+// eat.src = "audio/eat.mp3";
+// up.src = "audio/up.mp3";
+// left.src = "audio/left.mp3";
+// right.src = "audio/right.mp3";
+// down.src = "audio/down.mp3";
 
-let dead = new Audio();
-let eat = new Audio();
-let up = new Audio();
-let right = new Audio();
-let left = new Audio();
-let down = new Audio();
 
-dead.src = "audio/dead.mp3";
-eat.src = "audio/eat.mp3";
-up.src = "audio/up.mp3";
-right.src = "audio/right.mp3";
-left.src = "audio/left.mp3";
-down.src = "audio/down.mp3";
 
-// create the snake
 
-let snake = [];
-
-snake[0] = {
-    x : 9 * box,
-    y : 10 * box
-};
-
-// create the food
-
+//create the food, randomly
 let food = {
-    x : Math.floor(Math.random()*17+1) * box,
-    y : Math.floor(Math.random()*15+3) * box
+    x: Math.floor(Math.random() * 17 + 1) * box,
+    y: Math.floor(Math.random() * 15 + 3) * box,
 }
 
-// create the score var
-
+//create the score variable
 let score = 0;
 
-//control the snake
+//create snake
+let snake = [];
+snake[0] = {
+    x: 9 * box,
+    y: 10 * box
+}
 
+//old head position
+let snakeX = snake[0].x;
+let snakeY = snake[0].y;
+console.log(snakeX);
+
+//CONTROL THE SNAKE
+//with keys; 
 let d;
 
-document.addEventListener("keydown",direction);
 
-function direction(event){
-    let key = event.keyCode;
-    if( key == 37 && d != "RIGHT"){
-        left.play();
+document.addEventListener("keydown", direction);
+
+function direction(e) {
+    if (e.keyCode == 37 && d != "RIGHT") {
+        //left.play();
         d = "LEFT";
-    }else if(key == 38 && d != "DOWN"){
+        console.log(d);
+        return d;
+    } else if (e.keyCode == 38 && d != "DOWN") {
+        //up.play();
         d = "UP";
-        up.play();
-    }else if(key == 39 && d != "LEFT"){
+        console.log(d);
+    } else if (e.keyCode == 39 && d != "LEFT") {
+        //right.play();
         d = "RIGHT";
-        right.play();
-    }else if(key == 40 && d != "UP"){
+        console.log(d);
+    } else if (e.keyCode == 40 && d != "UP") {
+        //down.play();
         d = "DOWN";
-        down.play();
+        console.log(d);
     }
 }
 
-// cheack collision function
-function collision(head,array){
-    for(let i = 0; i < array.length; i++){
-        if(head.x == array[i].x && head.y == array[i].y){
-            return true;
-        }
-    }
-    return false;
-}
 
-// draw everything to the canvas
+//How to draw Snake && ground && food && score
+//draw everything to the canvas
+function draw() {
 
-function draw(){
-    
-    ctx.drawImage(ground,0,0);
-    
-    for( let i = 0; i < snake.length ; i++){
-        ctx.fillStyle = ( i == 0 )? "green" : "white";
-        ctx.fillRect(snake[i].x,snake[i].y,box,box);
-        
+
+
+    ctx.drawImage(ground, 0, 0); //draws the ground image at 0,0 of the canvas
+
+    for (let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = (i == 0) ? "green" : "white";
+
+        ctx.fillRect(snake[i].x, snake[i].y, box, box);
+
         ctx.strokeStyle = "red";
-        ctx.strokeRect(snake[i].x,snake[i].y,box,box);
+        ctx.strokeRect(snake[i].x, snake[i].y, box, box);
     }
-    
+
     ctx.drawImage(foodImg, food.x, food.y);
-    
-    // old head position
-    let snakeX = snake[0].x;
-    let snakeY = snake[0].y;
-    
-    // which direction
-    if( d == "LEFT") snakeX -= box;
-    if( d == "UP") snakeY -= box;
-    if( d == "RIGHT") snakeX += box;
-    if( d == "DOWN") snakeY += box;
-    
-    // if the snake eats the food
-    if(snakeX == food.x && snakeY == food.y){
+
+
+
+    //which direction
+    if (d == "LEFT") snakeX -= box;
+    if (d == "UP") snakeY -= box;
+    if (d == "RIGHT") snakeX += box;
+    if (d == "DOWN") snakeY += box;
+
+
+    //remove the tail
+    //snake.pop();
+
+    //ADD NEW HEAD
+    let newHead = {
+        x: snakeX,
+        y: snakeY
+    }
+
+    snake.unshift(newHead);
+
+
+    ctx.fillStyle = "white";
+    ctx.font = "45px Arial";
+    ctx.fillText(score, 2 * box, 1.6 * box);
+
+    //if snake eats the food
+    if (snakeX == food.x && snakeY == food.y) {
         score++;
-        eat.play();
+        //eat.play();
         food = {
-            x : Math.floor(Math.random()*17+1) * box,
-            y : Math.floor(Math.random()*15+3) * box
+            x: unit * Math.floor(Math.random() * 17 + 1),
+            y: unit * Math.floor(Math.random() * 15 + 3)
         }
-        // we don't remove the tail
-    }else{
-        // remove the tail
+    } else {
         snake.pop();
     }
-    
-    // add new Head
-    
-    let newHead = {
-        x : snakeX,
-        y : snakeY
-    }
-    
-    // game over
-    
-    if(snakeX < box || snakeX > 17 * box || snakeY < 3*box || snakeY > 17*box || collision(newHead,snake)){
+
+
+    if (snakeX < box || snakeX > 17 * box || snakeY < 3 * box || snakeY > 17 * box || collision(newHead, snake)) {
         clearInterval(game);
-        dead.play();
+        //dead.play();
     }
-    
-    snake.unshift(newHead);
-    
-    ctx.fillStyle = "white";
-    ctx.font = "45px Changa one";
-    ctx.fillText(score,2*box,1.6*box);
+
+    function collision(head, array) {
+        for (let i = 0; i < array.length; i++) {
+            if (head.x == array[i].x && head.y == array[i].y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 
-// call draw function every 100 ms
-
-let game = setInterval(draw,100);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//call the draw function every 100ms
+let game = setInterval(draw, 100); //calls the draw function every 100ms 

@@ -16,13 +16,13 @@ ground.src = "img/ground.png";
 const foodImg = new Image();
 foodImg.src = "img/food.png";
 
-// const dead = new Audio();
+const dead = new Audio();
 // const eat = new Audio();
 // const up = new Audio();
 // const left = new Audio();
 // const right = new Audio();
 // const down = new Audio();
-// dead.src = "audio/dead.mp3";
+ dead.src = "audio/dead.mp3";
 // eat.src = "audio/eat.mp3";
 // up.src = "audio/up.mp3";
 // left.src = "audio/left.mp3";
@@ -60,19 +60,12 @@ document.addEventListener("keydown", direction);
 function direction(event) {
     if (event.keyCode == 37 && d != "RIGHT") {
         d = "LEFT";
-        console.log(d);
-        return d;
     } else if (event.keyCode == 38 && d != "DOWN") {
         d = "UP";
-        console.log(d);
     } else if (event.keyCode == 39 && d != "LEFT") {
-        //right.play();
         d = "RIGHT";
-        console.log(d);
     } else if (event.keyCode == 40 && d != "UP") {
-        //down.play();
         d = "DOWN";
-        console.log(d);
     }
 }
 
@@ -98,9 +91,9 @@ function draw() {
 
 
     //remove the tail...so he's trying to remove the tail...but if there is no tail...it just removes the entire snake....so I feel like I need to say, if snake.length > 1
-    if (snake.length >= 1) {
-        snake.pop();
-    }
+    // if (snake.length >= 1) {
+    //     snake.pop();
+    // }
 
     //which direction
     if (d == "LEFT") snakeX -= box;
@@ -124,32 +117,42 @@ function draw() {
     //if snake eats the food
     //Then i want to push the coordinates to snake; so I'd want to snake.push(foodCoordinates);
 
+    
     if (snakeX == food.x && snakeY == food.y) {
         score++;
         snake.push(newHead);
+        snake.pop();
         food = {
             x: box * Math.floor(Math.random() * 17 + 1),
             y: box * Math.floor(Math.random() * 15 + 3)
         };
     } else {
-        //    snake.pop();
+        snake.pop();
     }
 
-
-    if (snakeX < box || snakeX > 17 * box || snakeY < 3 * box || snakeY > 17 * box /* || collision(newHead, snake) */) {
+    //handing collisions with the wall
+    if (snakeX < box || snakeX > 17 * box || snakeY < 3 * box || snakeY > 17 * box || collision(newHead, snake) ) {
         clearInterval(game);
-        console.log(newHead);
     }
 
+    //handling collisions with the snake body
+
+    // if (snake.length > 1 && collision(newHead, snake)) {
+    //     console.log("hit the body");
+    // }
+    //so, something is happening when snakeHead is the same as the food...so take a look at what happens when snake head is same as food
+
+    //this function is part of the conditional statement for the IF statement handling collision
     function collision(head, array) {
-        for (let i = 0; i < array.length; i++) {
+        for (let i = 1; i < array.length; i++) {
             if (head.x == array[i].x && head.y == array[i].y) {
-                console.log('same');
+                return true;
             }
         }
+        return false;
     }
 
 }
 
 //call the draw function every 100ms
-//let game = setInterval(draw, 200); //calls the draw function every 100ms 
+let game = setInterval(draw, 200); 

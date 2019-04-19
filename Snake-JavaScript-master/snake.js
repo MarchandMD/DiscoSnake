@@ -1,13 +1,11 @@
 /*
 Create by Learn Web Developement
 Youtube channel : https://www.youtube.com/channel/UC8n8ftV94ZU_DJLOLtrpORA
-awesome! I got this to work! I'm actually really proud of myself for being able to duplicate someone elses work! its a small thing, but it's a complicated thing, so to be able to do this is a boost of confidence, becaue I have to know at leat a litlte bit of what's going on to be able to trouble shoot. 
+
 */
 
-
-//so this first variable grabs the canvas element from the DOM
 const cvs = document.querySelector('#canvas');
-//this variable creates a getContext('2d')
+
 
 /* !about .getContext: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext
     and about the canvas API: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
@@ -16,10 +14,24 @@ const cvs = document.querySelector('#canvas');
  */
 const ctx = cvs.getContext('2d');
 
-//box unit: this will be used to size the snake and the game board. What would happen if I changed this value?...well the food.png is too large, and the borders do not match up with the ground image....
-const box = 32;
 
-//LOAD IMAGES; there are also sounds, but I've omitted them, because I find them to be trite and annoying, and have disabled them via my client
+const box = 32;
+//this variable is used repeatedly throughout the script. It is used:
+//1. as a width and height for the snakehead
+//2. to center the snakehead on the Image/canvas
+//3. as an aide to the positioning of the food image
+//4. as a width and height for every strokeRect of the snake body
+//5. as a width and height for every fillRect of the snake body
+//6. as an incrementer for the direction of the snake
+//7. as an aide in placing the score on the canvas
+//8. as a randomizer in creating the x and y coordinates of the food after the snake eats it
+//9. in conditional statements as part of the collision detection by creating boundaries for the snakehead
+
+
+
+
+//This creates a JS variable called "ground"...and it's equal to a new JS Image object. By creating a new Image() object, I can then call the JS variable, use dot notation to access/set the src, then BOOM! That varialble "ground" now has an image, with a source! So instead of dealing with the actual image, I'm dealing with a variable for the image..... and I can pass the variable to an argument...
+//In this situation, the 'ground' variable will be used with the ctx.drawImage() function of the CanvasAPI
 const ground = new Image();
 ground.src = "img/ground.png";
 
